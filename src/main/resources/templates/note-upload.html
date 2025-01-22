@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+          integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link rel="stylesheet" href="/css/note-upload.css">
+    <title>Not Yükleme</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: 'Euclid', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #CCCAFF;
+            color: #594EFF;
+            text-decoration: none;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .navbar-right .dropdown {
+            position: relative;
+
+        }
+
+
+        .dropdown-menu {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background-color: #CCCAFF;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #594EFF;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .not-yukle, .not-ara {
+            margin-right: 10px;
+            padding-left: 10px;
+        }
+
+        .profile-li {
+            margin-left: 10px;
+        }
+
+        .box {
+            margin-left: 40px;
+        }
+
+        .nav-buttons a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, border 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #CCCAFF;
+            border: 1px solid #fff;
+        }
+
+        .navbar a:hover {
+            color: #605c9a;
+        }
+
+        a {
+            text-decoration: none;
+            color: #594EFF;
+        }
+
+    </style>
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="http://localhost:8080/note-upload" class="not-yukle"><i class="fa-solid fa-plus"></i> not yükle</a>
+        <a href="http://localhost:8080/notes" class="not-ara"><i class="fa-solid fa-magnifying-glass"></i> not ara</a>
+    </div>
+    <div class="logo" style="color: #594EFF; font-size: larger;"><a href="http://localhost:8080/home">notçum</a></div>
+    <div class="navbar-right">
+        <div class="dropdown">
+            <a href="#" class="profile-li"><i class="fa-solid fa-user"></i> hesabım</a>
+            <div class="dropdown-menu">
+                <a href="http://localhost:8080/profile">Profilim</a>
+                <a href="#" id="logoutButton">Çıkış Yap</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="upload-form-container">
+    <form class="upload-form" id="upload-form" enctype="multipart/form-data">
+        <h1>Notunu Yükle</h1>
+        <label for="course-name">Dersin Adı:</label>
+        <input type="text" id="course-name" placeholder="Dersin adını girin" required>
+
+        <label for="department">Bölüm:</label>
+        <input type="text" id="department" placeholder="Bölümü girin" required>
+
+        <label for="course-code">Dersin Kodu:</label>
+        <input type="text" id="course-code" placeholder="Dersin kodunu girin" required>
+
+        <label for="description">Açıklama:</label>
+        <input type="text" id="description" placeholder="Notunuza ait açıklama girin" required>
+
+        <label for="price">Fiyat:</label>
+        <input type="text" id="price" placeholder="Satmak istediğiniz fiyatı girin" required>
+
+        <label for="pdf-upload">Notunu PDF olarak at:</label>
+        <div class="pdf-upload-container">
+            <input type="file" id="pdf-upload" accept="application/pdf" required>
+        </div>
+
+        <button type="submit" class="submit-btn">GÖNDER</button>
+    </form>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2024 NOTÇUM. Tüm Hakları Saklıdır.</p>
+    <nav>
+        <a href="http://localhost:8080/aboutus">Hakkımızda</a>
+        <a href="http://localhost:8080/contactus">İletişim</a>
+        <a href="/privacy">Gizlilik Politikası</a>
+    </nav>
+</footer>
+</body>
+
+<script src="/js/note-upload.js">
+
+</script>
+
+
+</html>

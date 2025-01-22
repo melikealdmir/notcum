@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Notçum-Showcase</title>
+
+
+    <style>
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: "Euclid";
+        }
+
+        body {
+            font-family: 'Euclid', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1f29, #2e3241);
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: transparent;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            font-size: 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 50px;
+            gap: 20px;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin: 20px 0;
+            color: #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: #1e1f29;
+        }
+
+        .hero-image {
+            max-width: 45%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #features {
+
+            display: flex;
+            align-items: center;
+            gap: 50px;
+
+
+        }
+
+        .features-text {
+            flex: 1;
+        }
+
+        .features-text h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+        }
+
+        .features-text p {
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .features-text p span {
+            color: #f89cfc;
+            font-weight: 600;
+        }
+
+        .features-image {
+            flex: 1;
+        }
+
+        .features-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+
+        #team {
+
+            text-align: center;
+
+
+        }
+
+        #team h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .team-member {
+            background-color: #4e536d;
+            border-radius: 10px;
+            padding: 50px;
+            text-align: center;
+            width: 150px;
+            height: 200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin: 5px 0 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Sayfanın tamamını kaplayacak şekilde ayarladık */
+        }
+
+        .tech-stack h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack img {
+
+            max-width: 100%; /* Görsellerin kapsayıcıyı aşmamasını sağlamak */
+            height: 200px; /* Görsellerin orantılı olarak küçülmesini sağlamak */
+
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e1f29;
+            color: #ccc;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">Notçum</div>
+    <nav>
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
+            <li><a href="http://localhost:8080/signup">Siteye Git</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <p>Note exchange is now easier; upload or sell.</p>
+        <h1>Find the note you want on the site. Download the PDF or get a printed version. </h1>
+
+    </div>
+    <div class="hero-image">
+        <img src="/img/notesPagess.png" alt="Notla Mockup" style="width: 100%; border: 5px solid #8b44ee;">
+    </div>
+</section>
+
+<section id="features" style="margin-top:100px;padding:50px">
+    <div class="features-image">
+        <img src="/img/mainpage.png" alt="Features Image" style="width: 100%; border: 5px solid #8b44ee">
+    </div>
+    <div class="features-text">
+        <h2>The easy way to exchange notes.</h2>
+        <p><span>Upload your class note:</span> Upload the class note you want to sell to the site.</p>
+        <p><span>Find the note:</span> Use the filtering feature to find the note you want quickly.</p>
+        <p><span>Buy the note in two ways:</span> Choose between the PDF version or the printed version.</p>
+    </div>
+
+</section>
+
+<section id="team" style="margin-top:50px; padding:50px">
+    <h2>Our Creators</h2>
+    <div class="team-members" style="padding:30px;">
+
+        <div class="team-member">
+            <img src="https://via.placeholder.com/80" alt="Team Member">
+            <h3>Aleyna Alaca</h3>
+            <p>Developer</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/80" alt="Team Member">
+            <h3>Azra İrem Dalhasanoğlu</h3>
+            <p>Developer</p>
+        </div>
+        <div class="team-member">
+            <img src="/img/emre.jpeg" alt="Team Member">
+            <h3>Mazlum Emre Girgin</h3>
+            <p>Developer</p>
+        </div>
+        <div class="team-member">
+            <img src="https://via.placeholder.com/80" alt="Team Member">
+            <h3>Melike Aldemir</h3>
+            <p>Developer</p>
+        </div>
+
+    </div>
+</section>
+
+<div class="tech-stack" id="tech-stack">
+    <div><h2>Tech Stack</h2></div>
+
+    <div style="margin-top:40px">
+        <img src="/img/css.png" alt="Django REST framework">
+        <img src="/img/pngegg.png" alt="Docker">
+        <img src="/img/spring.png" alt="React">
+        <img src="/img/postgre.png" alt="Wave">
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Notçum. All rights reserved.</p>
+</footer>
+</body>
+<script>
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute('href'));
+            window.scrollTo({
+                top: target.offsetTop - 50, // Üstteki header için boşluk
+                behavior: 'smooth'
+            });
+        });
+    });
+
+
+</script>
+</html>

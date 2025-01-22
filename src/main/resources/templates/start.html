@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/signup.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+
+    <style>
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: 'Euclid', sans-serif;
+        }
+
+        .left-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .entry {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .entry i {
+            font-size: 100px;
+            margin-bottom: 10px;
+        }
+
+        .entry:hover {
+            color: #594EFF;
+            transform: scale(1.1);
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="left-section">
+        <a href="http://localhost:8080/start-user" class="entry">
+            <i class="fas fa-user"></i>
+            <div>Öğrenci Girişi</div>
+        </a>
+        <a href="http://localhost:8080/start-stationery" class="entry">
+            <i class="fas fa-home"></i>
+            <div>Kırtasiye Girişi</div>
+        </a>
+    </div>
+    <div class="right-section">
+        <h1>notçum</h1>
+
+    </div>
+</div>
+
+
+</body>
+
+
+</html>
+

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="notes.css">
+    <title>Notlar</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: "Euclid";
+        }
+
+        body {
+
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #CCCAFF;
+            text-decoration: none;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .navbar-right .dropdown {
+            position: relative;
+
+        }
+
+
+        .dropdown-menu {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background-color: #CCCAFF;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #594EFF;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .not-yukle, .not-ara {
+            margin-right: 10px;
+            padding-left: 10px;
+        }
+
+        .profile-li {
+            margin-left: 10px;
+        }
+
+        .box {
+            margin-left: 40px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #594EFF;
+        }
+
+        .navbar a:hover {
+            color: #605c9a;
+        }
+
+        .nav-buttons a {
+            margin-left: 15px;
+            text-decoration: none;;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, border 0.3s;
+        }
+
+        .container2 {
+            display: flex;
+            flex-direction: column;
+            width: 900px;
+            margin: 0 auto;
+
+        }
+
+        .kutu {
+            background-color: #fff;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 12px 12px rgba(14, 14, 14, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            margin-left: -280px;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .left {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .code {
+            font-weight: bold;
+            font-size: small;
+            margin-bottom: 5px;
+        }
+
+        .ders {
+            font-size: medium;
+            font-weight: bold;
+
+        }
+
+        .department {
+            opacity: 0.4;
+            font-size: medium;
+            font-weight: medium;
+        }
+
+        .right {
+            flex: 1;
+
+        }
+
+        .tarih {
+            opacity: 0.5;
+            font-size: small;
+            margin-top: 20px;
+            text-align: right;
+
+        }
+
+        .Acıklama {
+            font-size: medium;
+            margin-top: 20px;
+            text-align: center;
+
+        }
+
+
+        .name {
+            opacity: 0.5;
+            font-size: small;
+        }
+
+
+        .filter-section {
+            width: 40%;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            margin-top: -500px;
+            margin-left: 720px;
+        }
+
+        .filter-section h2 {
+            color: #594EFF;
+            margin-bottom: 10px;
+        }
+
+        .filter-form label {
+            display: block;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .filter-form input {
+            width: 97%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .filter-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #594EFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .filter-form button:hover {
+            background-color: #605c9a;
+        }
+
+
+        .footer {
+            width: 100%;
+            background-color: #CCCAFF;
+            color: #594EFF;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+
+
+        }
+
+
+        .footer a {
+            color: #594EFF;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: color 0.3s;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #CCCAFF;
+        }
+
+
+        .kutu {
+
+            box-shadow: 0 12px 12px rgba(16, 15, 15, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .kutu:hover {
+
+
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+
+
+        .main {
+            display: flex;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .notes {
+            width: 70%;
+            padding: 20px;
+
+        }
+
+        .notes .note {
+            display: block;
+            padding: 15px;
+            margin-bottom: 15px;
+
+
+            text-decoration: none;
+
+        }
+
+        .notes .note .kutu {
+            display: flex;
+            justify-content: space-between;
+            margin-left: 5px;
+            color: #000;
+        }
+
+        .notes .note .left {
+            flex: 70%;
+        }
+
+        .notes .note .right {
+            flex: 30%;
+            text-align: right;
+        }
+
+        .notes .note div {
+            margin-bottom: 5px;
+        }
+
+
+        .filter {
+            width: 16%;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            position: fixed;
+            right: 10%;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="http://localhost:8080/note-upload" class="not-yukle"><i class="fa-solid fa-plus"></i> not yükle</a>
+        <a href="http://localhost:8080/notes" class="not-ara"><i class="fa-solid fa-magnifying-glass"></i> not ara</a>
+    </div>
+    <div class="logo" style="color: #594EFF; font-size: larger;"><a href="http://localhost:8080/home">notçum</a></div>
+    <div class="navbar-right">
+        <div class="dropdown">
+            <a href="#" class="profile-li"><i class="fa-solid fa-user"></i> hesabım</a>
+            <div class="dropdown-menu">
+                <a href="http://localhost:8080/profile">Profilim</a>
+                <a href="#" id="logoutButton">Çıkış Yap</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="main">
+
+    <div class="notes">
+
+    </div>
+    <div class="filter">
+        <h2>Filtreleme</h2>
+        <form class="filter-form" id="filterForm">
+            <label for="course-code">Ders Kodu:</label>
+            <input type="text" id="course-code" name="course-code">
+
+            <label for="course-name">Ders Adı:</label>
+            <input type="text" id="course-name" name="course-name">
+
+            <label for="department">Departman:</label>
+            <input type="text" id="department" name="department">
+
+            <button type="submit">Filtreleri Uygula</button>
+        </form>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <p>&copy; 2024 NOTÇUM. Tüm Hakları Saklıdır.</p>
+    <nav>
+        <a href="http://localhost:8080/aboutus">Hakkımızda</a>
+        <a href="http://localhost:8080/contactus">İletişim</a>
+        <a href="/privacy">Gizlilik Politikası</a>
+    </nav>
+</footer>
+</body>
+<script>
+
+
+    async function fetchNotes() {
+        const response = await fetch('http://localhost:8080/note/get-all');
+        const notes = await response.json();
+
+        const container = document.querySelector('.notes');
+        notes.forEach(note => {
+            const noteElement = document.createElement('a');
+            noteElement.classList.add('note');
+            noteElement.href = `http://localhost:8080/note-detail?id=${note.id}`;
+            noteElement.innerHTML = `
+							<div class="kutu">
+							    <div class="left">
+									<div class="ders">${note.title}</div>
+							        <div class="code">${note.code}</div>
+									<div class="department">${note.department}</div>
+							        <div class="name">${note.user.name} • 👁️ 78</div>
+							    </div>
+							    <div class="right">
+							        <div class="Acıklama" >${note.description} </div>
+							        <div class="tarih">8 Nisan</div>
+							    </div>
+							</div>
+					        `;
+            container.appendChild(noteElement);
+        });
+    }
+
+    // Sayfa yüklendiğinde notları getir
+    document.addEventListener('DOMContentLoaded', fetchNotes);
+
+
+    document.getElementById('filterForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Formun varsayılan davranışını engelle
+
+        // Filtreleme kriterlerini al
+        const courseCode = document.getElementById('course-code').value.trim().toLowerCase();
+        const courseName = document.getElementById('course-name').value.trim().toLowerCase();
+        const department = document.getElementById('department').value.trim().toLowerCase();
+
+        // Tüm kutuları seç
+        const kutular = document.querySelectorAll('.kutu');
+
+        // Her bir kutu üzerinde kontrol yap
+        kutular.forEach(kutu => {
+            const code = kutu.querySelector('.code').textContent.trim().toLowerCase();
+            const ders = kutu.querySelector('.ders').textContent.trim().toLowerCase();
+            const deparment = kutu.querySelector('.department').textContent.trim().toLowerCase();
+
+            // Filtreleme kontrolü
+            const codeMatch = !courseCode || code.includes(courseCode);
+            const nameMatch = !courseName || ders.includes(courseName);
+            const departmentMatch = !department || deparment.includes(department);
+
+            // Eşleşenleri göster, diğerlerini gizle
+            if (codeMatch && nameMatch && departmentMatch) {
+                kutu.style.display = ''; // Varsayılan görünürlük
+            } else {
+                kutu.style.display = 'none'; // Gizle
+            }
+        });
+    });
+
+    document.getElementById("logoutButton").addEventListener('click', async function () {
+        try {
+            const response = await fetch('http://localhost:8080/user/logout');
+            if (response.ok) {
+                window.location.href = "http://localhost:8080/start"; // Çıkış yaptıktan sonra giriş sayfasına yönlendirme
+            }
+        } catch (error) {
+            console.error('Hata:', error);
+        }
+    });
+
+
+</script>
+</html>
+

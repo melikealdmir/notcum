@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol - Öğrenci</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+
+    <style>
+
+
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: "Euclid";
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-section">
+        <h1 style="color:#000">Kayıt Ol - Öğrenci</h1>
+        <form>
+            <input type="text" placeholder="İsim" maxlength="40" style="color: black;">
+            <input type="text" placeholder="Soyisim" maxlength="20" style="color: black">
+            <input type="email" pLaceholder="E-posta" style="color: black">
+            <input type="password" placeholder="Şifre" style="color: black">
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        <p class="login-text">
+            Zaten bir hesabın var mı?
+            <a id="girişbuton" style="cursor:pointer; color:#594EFF" href="http://localhost:8080/start">GİRİŞ YAP</a>
+        </p>
+    </div>
+    <div class="right-section">
+        <h1>notçum</h1>
+
+    </div>
+</div>
+</body>
+
+
+<script>
+
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = form.querySelector('input[placeholder="İsim"]').value.trim();
+        const surName = form.querySelector('input[placeholder="Soyisim"]').value.trim();
+        const mail = form.querySelector('input[placeholder="E-posta"]').value.trim();
+        const password = form.querySelector('input[placeholder="Şifre"]').value.trim();
+
+
+        const emailPattern = /@posta\.mu\.edu\.tr$/;
+        const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+        if (!emailPattern.test(mail)) {
+            alert("Sadece posta.mu.edu.tr uzantılı e-posta adresleriyle kayıt olabilirsiniz.");
+            return;
+        }
+
+        if (!passwordPattern.test(password)) {
+            alert("Şifre en az bir büyük harf, bir rakam içermelidir ve en az 8 karakter olmalıdır.");
+            return;
+        }
+
+
+        const userData = {
+            name,
+            surName,
+            mail,
+            password,
+        };
+
+        console.log(userData);
+
+
+        try {
+            const response = await fetch("http://localhost:8080/user/save", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userData),
+            });
+
+
+            if (response.ok) {
+                alert("Kayıt başarılı!");
+                form.reset();
+                window.location.href = "http://localhost:8080/start";
+            } else {
+                alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+            }
+        } catch (error) {
+            console.error("Hata:", error);
+            alert("Sunucuya bağlanırken bir hata oluştu.");
+        }
+    });
+
+
+</script>
+</html>

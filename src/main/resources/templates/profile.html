@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Profilim</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        body {
+
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #CCCAFF;
+            text-decoration: none;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .navbar-left {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-right .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background-color: #CCCAFF;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #594EFF;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        a {
+            text-decoration: none;
+            color: #594EFF;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 90%;
+            height: 700px;
+            padding: 80px 20px;
+            margin: 20px auto;
+        }
+
+        .section {
+            width: 30%;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .section h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #000;
+        }
+
+        form input {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .section:first-child {
+            height: 400px;
+            margin-left: -30px;
+        }
+
+        .container2 {
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 400px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            padding: 8px 10px;
+
+
+        }
+
+        .kutu {
+            background-color: #fff;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 12px 12px rgba(14, 14, 14, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+
+        }
+
+        .left {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .code {
+            font-weight: bold;
+            font-size: medium;
+            margin-bottom: 5px;
+        }
+
+        .ders {
+            opacity: 0.4;
+            font-size: small;
+        }
+
+        .right {
+            flex: 1;
+
+        }
+
+        .tarih {
+            opacity: 0.5;
+            font-size: small;
+            margin-top: 20px;
+            text-align: right;
+
+        }
+
+        .Acıklama {
+            font-size: medium;
+            margin-top: 20px;
+            text-align: center;
+
+        }
+
+
+        .name {
+            opacity: 0.5;
+            font-size: small;
+        }
+
+        .kutu {
+
+            box-shadow: 0 12px 12px rgba(16, 15, 15, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .kutu:hover {
+
+
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+
+        .footer {
+            width: 100%;
+            background-color: #CCCAFF;
+            color: #594EFF;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: -15px;
+        }
+
+        .footer a {
+            color: #594EFF;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #ffdd57;
+        }
+
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Euclid';
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="http://localhost:8080/note-upload" class="not-yukle"><i class="fa-solid fa-plus"></i> not yükle</a>
+        <a href="http://localhost:8080/notes" class="not-ara"><i class="fa-solid fa-magnifying-glass"></i> not ara</a>
+    </div>
+    <div class="logo" style="color: #594EFF; font-size: larger;"><a href="http://localhost:8080/home">notçum</a></div>
+    <div class="navbar-right">
+        <div class="dropdown">
+            <a href="#" class="profile-li"><i class="fa-solid fa-user"></i> hesabım</a>
+            <div class="dropdown-menu">
+                <a href="http://localhost:8080/profile">Profilim</a>
+                <a href="#" id="logoutButton">Çıkış Yap</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="section">
+        <h1>Profilim</h1>
+        <form>
+            <label for="ad">Ad:</label>
+            <div style="height: 25px; width: 300px; border: 1px solid #ccc;"><span id="userName"></span>
+            </div>
+            <br>
+
+            <label for="soyad">Soyad:</label>
+            <div style="height: 25px; width: 300px; border: 1px solid #ccc;"><span id="surName"></span>
+            </div>
+            <br>
+
+            <label for="mail">Mail:</label>
+            <div style="height: 25px; width: 300px; border: 1px solid #ccc;"><span id="mail"></span>
+
+            </div>
+            <br>
+        </form>
+
+        <div class="rating">
+            Kullanıcı Puanı:
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>Yüklediklerim</h1>
+        <div class="container2">
+            <div class="kutu">
+                <div class="left">
+                    <div class="code">SE 2003</div>
+                    <div class="ders">Software Engineering Concepts</div>
+                    <div class="name">Elif Güpın. 👁 78</div>
+                </div>
+                <div class="right">
+                    <div class="Acıklama">Lorem ipsum dolor sit.</div>
+                    <div class="tarih">Apr 8</div>
+                </div>
+            </div>
+
+            <div class="kutu">
+                <div class="left">
+                    <div class="code">SE 2004</div>
+                    <div class="ders">Advanced Programming</div>
+                    <div class="name">Ahmet Yıldız 👁 90</div>
+                </div>
+                <div class="right">
+                    <div class="Acıklama">Lorem ipsum dolor sit amet.</div>
+                    <div class="tarih">May 15</div>
+                </div>
+            </div>
+
+
+            <div class="kutu">
+                <div class="left">
+                    <div class="code">SE 2005</div>
+                    <div class="ders">Data Structures</div>
+                    <div class="name">Merve Yılmaz 👁 100</div>
+                </div>
+                <div class="right">
+                    <div class="Acıklama">Lorem ipsum dolor sit amet consectetur.</div>
+                    <div class="tarih">Jun 20</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h1>Satın Aldıklarım</h1>
+        <div class="container2">
+            <div class="kutu">
+                <div class="left">
+                    <div class="code">SE 2006</div>
+                    <div class="ders">Database Systems</div>
+                    <div class="name">Ali Veli 👁 120</div>
+                </div>
+                <div class="right">
+                    <div class="Acıklama">Project submission.</div>
+                    <div class="tarih">Jul 10</div>
+                </div>
+            </div>
+
+            <div class="kutu">
+                <div class="left">
+                    <div class="code">SE 2007</div>
+                    <div class="ders">Computer Networks</div>
+                    <div class="name">Cansu Demir 👁 140</div>
+                </div>
+                <div class="right">
+                    <div class="Acıklama">Group discussion topic.</div>
+                    <div class="tarih">Aug 15</div>
+                </div>
+            </div>
+
+
+            <div class="kutu">
+                <div class="left">
+                    <div class="code">SE 2008</div>
+                    <div class="ders">Operating Systems</div>
+                    <div class="name">Zeynep Çelik 👁 160</div>
+                </div>
+                <div class="right">
+                    <div class="Acıklama">Final presentation slides.</div>
+                    <div class="tarih">Sep 5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="footer">
+    <p>&copy; 2024 NOTÇUM. Tüm Hakları Saklıdır.</p>
+    <nav>
+        <a href="http://localhost:8080/aboutus">Hakkımızda</a>
+        <a href="http://localhost:8080/contactus">İletişim</a>
+        <a href="/privacy">Gizlilik Politikası</a>
+    </nav>
+</footer>
+</body>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        try {
+
+            const response = await fetch("http://localhost:8080/user/current-user");
+            if (response.ok) {
+                const user = await response.json();
+
+                const userNameElement = document.getElementById('userName');
+                const surNameElement = document.getElementById('surName');
+                const mailElement = document.getElementById('mail');
+
+                userNameElement.innerText = user.name;
+                surNameElement.innerText = user.surName;
+                mailElement.innerText = user.mail;
+            } else {
+                // Kullanıcı oturum açmadıysa giriş sayfasına yönlendirme
+                window.location.href = "/login";
+            }
+        } catch (error) {
+            console.error('Hata:', error);
+            window.location.href = "/login";
+        }
+    });
+
+
+    document.getElementById("logoutButton").addEventListener('click', async function () {
+        try {
+            const response = await fetch('http://localhost:8080/user/logout');
+            if (response.ok) {
+                window.location.href = "http://localhost:8080/start"; // Çıkış yaptıktan sonra giriş sayfasına yönlendirme
+            }
+        } catch (error) {
+            console.error('Hata:', error);
+        }
+    });
+
+</script>
+</html>

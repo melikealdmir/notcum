@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Detay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+          integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+          integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            max-width: 500px;
+            text-align: center;
+            margin: auto;
+            margin-top: 100px;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .popup-div {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .kutu {
+            height: 80px;
+
+            border: 1px solid #ddd;
+        }
+
+
+        .popup-div input[type="text"] {
+            width: 60%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #CCCAFF;
+            text-decoration: none;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .navbar-right .dropdown {
+            position: relative;
+
+        }
+
+
+        .dropdown-menu {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background-color: #CCCAFF;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #594EFF;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .not-yukle, .not-ara {
+            margin-right: 10px;
+            padding-left: 10px;
+        }
+
+        .profile-li {
+            margin-left: 10px;
+        }
+
+        .box {
+            margin-left: 40px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #594EFF;
+        }
+
+        .navbar a:hover {
+            color: #605c9a;
+        }
+
+        .nav-buttons a {
+            margin-left: 15px;
+            text-decoration: none;;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, border 0.3s;
+        }
+
+
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Euclid';
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin-top: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .info-section,
+        .pdf-section {
+            width: 45%;
+            padding: 20px;
+        }
+
+        .pdf-preview {
+
+            width: 100%;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .pdf-preview {
+
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+
+        }
+
+        iframe {
+            margin-top: 50px;
+            width: 100%;
+            height: 380px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .pdf-section h2 {
+            margin-left: 20px;
+        }
+
+        .info-section {
+            background-color: #f9f9f9;
+            height: 360px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            margin-top: 50px;
+            padding-bottom: -10px;
+        }
+
+        .note-info h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .note-info p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+
+        .buy-checkbox {
+            display: none;
+        }
+
+        .buy-button {
+            background-color: #594EFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 5px;
+            margin-left: 180px;
+            display: inline-block;
+        }
+
+        button2 {
+            background-color: #594EFF;
+            color: #f9f9f9;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+
+        }
+
+        .buy-button:hover {
+            background-color: #605c9a;
+        }
+
+        .purchase-options {
+            display: none;
+            margin-top: 0px;
+            margin-left: 60px;
+            padding-left: 0;
+        }
+
+        .option-button {
+            background-color: #CCCAFF;
+            color: #594EFF;
+            border: 1px solid #ccc;
+            padding: 8px;
+            width: 40%;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .option-button:hover {
+            background-color: #f0f0f0;
+        }
+
+
+        .buy-checkbox:checked + .buy-button + .purchase-options {
+            display: block;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: slideDown 0.3s forwards;
+        }
+
+        @keyframes slideDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .comments-section {
+            padding: 20px;
+            width: 1000px;
+            height: auto;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .comments-section h2 {
+            color: #594EFF;
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .comment p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .comment p:last-child {
+            opacity: 0.9;
+            margin-left: 870px;
+
+
+        }
+
+        .comment-input {
+            margin-top: 20px;
+            padding: 8px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .comment-input label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .comment-input input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .comment-input button {
+            padding: 8px 12px;
+            background-color: #594EFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-input button:hover {
+            background-color: #4e43e0;
+        }
+
+
+        .footer {
+            background-color: #CCCAFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .footer nav a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .footer nav a:hover {
+            text-decoration: underline;
+            color: #594EFF;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="http://localhost:8080/note-upload" class="not-yukle"><i class="fa-solid fa-plus"></i> not yükle</a>
+        <a href="http://localhost:8080/notes" class="not-ara"><i class="fa-solid fa-magnifying-glass"></i> not ara</a>
+    </div>
+    <div class="logo" style="color: #594EFF; font-size: larger;"><a href="http://localhost:8080/home">notçum</a></div>
+    <div class="navbar-right">
+        <div class="dropdown">
+            <a href="#" class="profile-li"><i class="fa-solid fa-user"></i> hesabım</a>
+            <div class="dropdown-menu">
+                <a href="http://localhost:8080/profile">Profilim</a>
+                <a href="#" id="logoutButton">Çıkış Yap</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="content-container">
+
+
+        <div class="pdf-section">
+            <h2>Önizleme</h2>
+            <div class="pdf-preview">
+                <iframe id="pdfIframe"></iframe>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Not Bilgisi</h2>
+            <p><strong>Dersin Kodu:</strong><span id="noteCode"></span></p>
+            <p><strong>Dersin Adı:</strong> <span id="noteTitle"></span></p>
+            <p><strong>Yazar:</strong> <span id="noteAuthor"></span></p>
+            <p><strong>Fiyat:</strong> <span id="notePrice"></span></p>
+            <p><strong>Açıklama:</strong><span id="noteDescription"></span></p>
+            <p style="opacity: 0.7; display: flex; align-items: center; gap: 10px;">
+                👁️128 görüntülenme
+                <i class="fa-solid fa-download"></i>54 indirme
+            </p>
+
+            <input type="checkbox" id="buy-checkbox" class="buy-checkbox">
+            <label for="buy-checkbox" class="buy-button">Satın Al</label>
+
+            <div class="purchase-options">
+                <button class="option-button">Dijital</button>
+                <button class="option-button">Baskılı</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="comments-section">
+        <h2>Kullanıcı Yorumları</h2>
+
+        <div class="comment">
+            <p><strong>Kullanıcı Adı:</strong> Aleyna Alaca </p>
+            <p>Notlar tam ve en onemli kısımlar vurgulanmıs tesekkürlerr!!</p>
+            <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        </div>
+
+        <div class="comment">
+            <p><strong>Kullanıcı Adı:</strong> Mazlum Emre Girgin</p>
+            <p>Oldukça açıklayıcı ve sade hazırlanmış. Umarım Geçmeme yardımcı olur. Teşekkürler.</p>
+            <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
+        </div>
+
+        <div class="comment-input">
+            <label for="comment">Yorum Yap:</label>
+            <input type="text" id="comment" placeholder="Yorumunuzu buraya yazın...">
+            <button>Gönder</button>
+        </div>
+
+    </div>
+
+
+</div>
+
+<footer class="footer">
+    <p>&copy; 2024 NOTÇUM. Tüm Hakları Saklıdır.</p>
+    <nav>
+        <a href="http://localhost:8080/aboutus">Hakkımızda</a>
+        <a href="http://localhost:8080/contactus">İletişim</a>
+        <a href="/privacy">Gizlilik Politikası</a>
+    </nav>
+</footer>
+
+<div class="popup">
+    <div class="popup-content">
+        <span class="popup-close">&times;</span>
+        <h2>Size En Yakın Kırtasiyeyi Seçin</h2>
+        <div class="popup-div" id="popup-div">
+
+
+        </div>
+        <a href="#">
+            <button2 id="confirmBtn">Siparişi Onayla</button2>
+        </a>
+    </div>
+
+    <script>
+
+        async function fetchNoteDetail() {
+            const params = new URLSearchParams(window.location.search);
+            const noteId = params.get('id');
+
+            if (!noteId) return;
+
+            const response = await fetch(`http://localhost:8080/note/${noteId}`);
+            const note = await response.json();
+
+            document.getElementById('noteCode').textContent = note.code;
+            document.getElementById('noteTitle').textContent = note.title;
+            document.getElementById('noteAuthor').textContent = note.user.name;
+            document.getElementById('noteDescription').textContent = note.description;
+            document.getElementById('notePrice').textContent = note.price;
+
+
+            document.getElementById('pdfIframe').src = `http://localhost:8080/note/view-pdf/${note.id}`;
+        }
+
+        // Sayfa yüklendiğinde detayları getir
+        fetchNoteDetail();
+
+
+        document.getElementById("confirmBtn").addEventListener("click", async function (event) {
+            event.preventDefault(); // Sayfanın yeniden yüklenmesini önler
+
+            try {
+                // Seçilen kırtasiyeyi al
+                const selectedStationery = document.querySelector('input[name="Kırtasiye"]:checked');
+                if (!selectedStationery) {
+                    alert("Lütfen bir kırtasiye seçin!");
+                    return;
+                }
+
+                const stationeryId = selectedStationery.id.replace('kutu', '');
+
+                // Kırtasiye bilgilerini al
+                const responseStationery = await fetch(`http://localhost:8080/stationery/${stationeryId}`);
+                if (!responseStationery.ok) {
+                    throw new Error("Kırtasiye bilgisi alınamadı.");
+                }
+                const stationery = await responseStationery.json();
+
+
+                // Not bilgilerini al
+                const params = new URLSearchParams(window.location.search);
+                const noteId = params.get('id');
+
+                if (!noteId) {
+                    alert("Not ID'si alınamadı!");
+                    return;
+                }
+
+                const responseNote = await fetch(`http://localhost:8080/note/${noteId}`);
+                if (!responseNote.ok) {
+                    throw new Error("Not bilgisi alınamadı.");
+                }
+                const note = await responseNote.json();
+
+                // FormData oluştur
+                const formData = new FormData();
+                formData.append("courseName", note.title);
+                formData.append("price", note.price);
+                formData.append("stationeryId", stationery.id); // Sadece ID gönderiliyor
+
+
+                console.log("Form Data:", Object.fromEntries(formData.entries()));
+
+                // POST isteği at
+                const responseOrder = await fetch("http://localhost:8080/order/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (!responseOrder.ok) {
+                    throw new Error("Sipariş oluşturulurken bir hata oluştu.");
+                }
+
+                const order = await responseOrder.json();
+                alert("Sipariş başarıyla oluşturuldu! Sipariş ID: " + order.id);
+            } catch (error) {
+                console.error("Hata:", error);
+                alert("Bir hata oluştu: " + error.message);
+            }
+        });
+
+
+        const popup = document.querySelector('.popup');
+        const popupClose = document.querySelector('.popup-close');
+        const baskiButton = document.querySelector('.option-button:nth-child(2)');
+
+        baskiButton.addEventListener('click', () => {
+            popup.style.display = 'flex';
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+
+        popup.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+
+
+        document.getElementById("logoutButton").addEventListener('click', async function () {
+            try {
+                const response = await fetch('http://localhost:8080/user/logout');
+                if (response.ok) {
+                    window.location.href = "http://localhost:8080/start"; // Çıkış yaptıktan sonra giriş sayfasına yönlendirme
+                }
+            } catch (error) {
+                console.error('Hata:', error);
+            }
+        });
+
+
+        document.querySelector('.buy-checkbox').addEventListener('change', function () {
+            if (this.checked) {
+                document.querySelector('.purchase-options').style.display = 'block';
+            } else {
+                document.querySelector('.purchase-options').style.display = 'none';
+            }
+        });
+
+        document.querySelector('.option-button:nth-child(2)').addEventListener('click', async () => {
+            try {
+                // Backend API çağrısı
+                const response = await fetch('http://localhost:8080/stationery/list');
+                if (!response.ok) throw new Error('Veri alınamadı!');
+
+                const stationeries = await response.json();
+                const popupDiv = document.getElementById('popup-div');
+                popupDiv.innerHTML = ''; // Önceki içeriği temizle
+
+                stationeries.forEach((stationery, index) => {
+                    const kutuDiv = document.createElement('div');
+                    kutuDiv.className = 'kutu';
+
+                    kutuDiv.innerHTML = `
+			                    <input type="radio" id="kutu${index + 1}" name="Kırtasiye">
+			                    <label for="kutu${index + 1}">
+			                        <div class="Kırtasiye">${stationery.name} - ${stationery.address}</div>
+			                    </label>
+			                `;
+
+                    popupDiv.appendChild(kutuDiv);
+                });
+
+                // Popup açılır
+                document.querySelector('.popup').style.display = 'block';
+            } catch (error) {
+                console.error('Kırtasiye bilgileri yüklenirken hata oluştu:', error);
+            }
+        });
+
+        // Popup kapatma
+        document.querySelector('.popup-close').addEventListener('click', () => {
+            document.querySelector('.popup').style.display = 'none';
+        });
+
+
+    </script>
+</html>

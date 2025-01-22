@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/css/login.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+
+    <style>
+
+
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: "Euclid";
+        }
+
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 70px;
+            flex-grow: 1;
+        }
+
+        .entry {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .entry i {
+            font-size: 100px;
+            margin-bottom: 10px;
+        }
+
+        .entry:hover {
+            color: #007bff;
+            transform: scale(1.1);
+        }
+
+        .login-text {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #girişbuton {
+            cursor: pointer;
+            color: #594EFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #girişbuton:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-section">
+        <a href="http://localhost:8080/signup-user" class="entry">
+            <i class="fas fa-user"></i>
+            <div>Öğrenci Kayıt</div>
+        </a>
+        <a href="http://localhost:8080/signup-stationery" class="entry">
+            <i class="fas fa-home"></i>
+            <div>Kırtasiye Kayıt</div>
+        </a>
+        <div style="margin-top:50px">
+            <p class="login-text">
+                Zaten bir hesabın var mı?
+                <a id="girişbuton" href="http://localhost:8080/start">GİRİŞ YAP</a>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="right-section">
+        <h1>notçum</h1>
+
+    </div>
+</div>
+</body>
+
+
+</html>

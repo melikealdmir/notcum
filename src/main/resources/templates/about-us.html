@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #CCCAFF;
+            color: #594EFF;
+            text-decoration: none;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .navbar-right .dropdown {
+            position: relative;
+
+        }
+
+
+        .dropdown-menu {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background-color: #CCCAFF;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #594EFF;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .not-yukle, .not-ara {
+            margin-right: 10px;
+            padding-left: 10px;
+        }
+
+        .profile-li {
+            margin-left: 10px;
+        }
+
+        .box {
+            margin-left: 40px;
+        }
+
+        .nav-buttons a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, border 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #CCCAFF;
+            border: 1px solid #fff;
+        }
+
+        .navbar a:hover {
+            color: #605c9a;
+        }
+
+        a {
+            text-decoration: none;
+            color: #594EFF;
+        }
+
+
+        .about-container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-container h1, .about-container h2 {
+            color: #594FFF;
+        }
+
+        .about-container section {
+            margin-bottom: 30px;
+        }
+
+        .about-container p {
+            line-height: 1.6;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .team-member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .team-member h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #594FFF;
+        }
+
+        .team-member p {
+            margin: 5px 0;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .footer {
+            background-color: #CCCAFF;
+            color: #594EFF;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #594EFF;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #ffdd57;
+        }
+
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Euclid';
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="http://localhost:8080/note-upload" class="not-yukle"><i class="fa-solid fa-plus"></i> not yükle</a>
+        <a href="http://localhost:8080/notes" class="not-ara"><i class="fa-solid fa-magnifying-glass"></i> not ara</a>
+    </div>
+    <div class="logo" style="color: #594EFF; font-size: larger;"><a href="http://localhost:8080/home">notçum</a></div>
+    <div class="navbar-right">
+        <div class="dropdown">
+            <a href="#" class="profile-li"><i class="fa-solid fa-user"></i> hesabım</a>
+            <div class="dropdown-menu">
+                <a href="http://localhost:8080/profile">Profilim</a>
+                <a href="#" id="logoutButton">Çıkış Yap</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="about-container">
+    <section class="intro">
+        <h1>Hakkımızda</h1>
+        <p>NOTÇUM, öğrencilerin not alışverişini kolay ve güvenli bir şekilde yapabileceği bir platformdur. Amacımız,
+            eğitim hayatını daha erişilebilir ve etkili hale getirmektir.</p>
+    </section>
+
+    <section class="our-mission">
+        <h2>Misyonumuz</h2>
+        <p>Öğrencilerin akademik başarılarını desteklemek ve not paylaşımını kolaylaştırmak için en iyi ve en güvenilir
+            hizmeti sunmak.</p>
+    </section>
+
+    <section class="our-vision">
+        <h2>Vizyonumuz</h2>
+        <p>Eğitimde bilgiye ulaşımı daha demokratik bir hale getirerek, tüm öğrencilerin kolayca bilgi paylaşabilmesini
+            sağlamak.</p>
+    </section>
+
+    <section class="our-team">
+        <h2>Ekibimiz</h2>
+        <div class="team-member">
+            <img src="img/ceo.jpg" alt="CEO">
+            <h3>Mazlum Emre Girgin</h3>
+            <p>CEO ve Kurucu</p>
+        </div>
+        <div class="team-member">
+            <img src="img/dev.jpg" alt="Developer">
+            <h3>Azra İrem Dalhasanoğlu</h3>
+            <p>Geliştirici</p>
+        </div>
+        <div class="team-member">
+            <img src="img/designer.jpg" alt="Designer">
+            <h3>Melike Aldemir</h3>
+            <p>Tasarımcı</p>
+        </div>
+        <div class="team-member">
+            <img src="img/designer.jpg" alt="Designer">
+            <h3>Aleyna Alaca</h3>
+            <p>Tasarımcı</p>
+        </div>
+    </section>
+</div>
+
+
+<footer class="footer">
+    <p>&copy; 2024 NOTÇUM. Tüm Hakları Saklıdır.</p>
+    <nav>
+        <a href="http://localhost:8080/aboutus">Hakkımızda</a>
+        <a href="http://localhost:8080/contactus">İletişim</a>
+        <a href="/privacy">Gizlilik Politikası</a>
+    </nav>
+</footer>
+</body>
+<script>
+    document.getElementById("logoutButton").addEventListener('click', async function () {
+        try {
+            const response = await fetch('http://localhost:8080/user/logout');
+            if (response.ok) {
+                window.location.href = "http://localhost:8080/start"; // Çıkış yaptıktan sonra giriş sayfasına yönlendirme
+            }
+        } catch (error) {
+            console.error('Hata:', error);
+        }
+    });
+</script>
+</html>

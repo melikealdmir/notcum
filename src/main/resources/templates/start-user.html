@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - Öğrenci</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: 'Euclid', sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="left-section">
+        <h1>Giriş Yap - Öğrenci</h1>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="E-posta" required>
+            <input type="password" id="password" placeholder="Şifre" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+
+        <p id="message"></p>
+        <p class="or-text">ya da</p>
+        <a class="google-login" href="/oauth2/authorization/google">
+            <img src="/img/google-logo.png" alt="Google Logo">
+            Google ile giriş yap
+        </a>
+
+    </div>
+    <div class="right-section">
+        <h1>notçum</h1>
+
+    </div>
+</div>
+
+
+</body>
+
+
+<script src="/js/login.js">
+</script>
+</html>

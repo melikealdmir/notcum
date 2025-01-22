@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol - Kırtasiye </title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+
+    <style>
+
+
+        @font-face {
+            font-family: 'Euclid';
+            src: url('fonts/Euclid Circular A Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: "Euclid";
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-section">
+        <h1 style="color:#000">Kayıt Ol - Kırtasiye</h1>
+        <form>
+            <input type="text" placeholder="Kırtasiye İsmi" style="color: black;">
+            <input type="email" pLaceholder="E-posta" style="color: black">
+            <input type="password" placeholder="Şifre" style="color: black">
+            <input type="text" placeholder="Adres" style="color: black">
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        <p class="login-text">
+            Zaten bir hesabın var mı?
+            <a id="girişbuton" style="cursor:pointer; color:#594EFF" href="http://localhost:8080/start">GİRİŞ YAP</a>
+        </p>
+    </div>
+    <div class="right-section">
+        <h1>notçum</h1>
+
+    </div>
+</div>
+</body>
+
+
+<script>
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = form.querySelector('input[placeholder="Kırtasiye İsmi"]').value;
+        const address = form.querySelector('input[placeholder="Adres"]').value;
+        const mail = form.querySelector('input[placeholder="E-posta"]').value;
+        const password = form.querySelector('input[placeholder="Şifre"]').value;
+
+        const stationeryData = { // Bu satır burada olmalı
+            name,
+            address,
+            mail,
+            password
+        };
+
+        try {
+            const response = await fetch("http://localhost:8080/stationery/save", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(stationeryData),
+            });
+
+            if (response.ok) {
+                alert("Kayıt başarılı!");
+                form.reset();
+                window.location.href = "http://localhost:8080/start-stationery";
+            } else {
+                alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+            }
+        } catch (error) {
+            console.error("Hata:", error);
+            alert("Sunucuya bağlanırken bir hata oluştu.");
+        }
+    });
+
+</script>
+</html>
