@@ -1,17 +1,31 @@
-📘 Notçum
-Notçum, öğrencilerin ders notlarını paylaşarak gelir elde edebileceği bir platformdur.
+# 🔗 Notçum
 
-🎯 Proje Amacı
-Bu proje, öğrencilerin kaliteli ders notlarına hızlı ve kolay erişimini sağlarken, not paylaşımı yapan öğrencilerin ek gelir kazanmasına imkan tanır.
+**Notçum**, öğrencilerin ders notlarını paylaşarak ek gelir elde etmelerini sağlayan bir platformdur.
 
-✨ Özellikler
--Dijital veya basılı ders notu satışı
--Öğrenciler için ek gelir sağlama fırsatı
--Güvenilir ve doğrulanmış notlara erişim imkanı
--Kırtasiye entegrasyonu sayesinde basılı sipariş seçeneği
+---
 
-🛠 Kullanılan Teknolojiler
-Frontend: HTML, CSS, JavaScript
-Backend: Java Spring Boot
-Database: PostgreSQL
+## 📌 Proje Amacı  
+
+Bu platform, öğrencilerin kaliteli ders notlarını kolayca bulmasını sağlarken, not sahiplerinin de gelir kazanmasına imkan tanır.
+
+---
+
+## ✨ Özellikler  
+
+- 📝 **Dijital ve basılı not satışı**  
+- 💰 **Öğrenciler için ek gelir fırsatı**  
+- 🔍 **Güvenilir ve kaliteli notlara erişim**  
+- 🏪 **Kırtasiye entegrasyonu ile basılı sipariş imkanı**  
+
+---
+
+## 🛠 Kullanılan Teknolojiler  
+
+- **Frontend:** `HTML`, `CSS`, `JavaScript`  
+- **Backend:** `Java Spring Boot`  
+- **Database:** `PostgreSQL`  
+
+
+
+
 
